@@ -5,11 +5,13 @@ public enum Categoria {
     ROMANCE("Romance", "Romance"),
     COMEDIA("Comedy", "Comedia"),
     DRAMA("Drama", "Drama"),
-    CRIMEN("Crime", "Crimen");
+    CRIMEN("Crime", "Crimen"),
+    AVENTURA("Adventure", "Aventura");
 
     private String categoriaOmdb;
     private String categoriaEspanol;
-    Categoria (String categoriaOmdb, String categoriaEspanol){
+
+    Categoria(String categoriaOmdb, String categoriaEspanol){
         this.categoriaOmdb = categoriaOmdb;
         this.categoriaEspanol = categoriaEspanol;
     }
@@ -23,6 +25,7 @@ public enum Categoria {
         throw new IllegalArgumentException("Ninguna categoria encontrada: " + text);
     }
 
+    //Metodo para la busqueda de peliculas digitadas por el usuario consuladas en la DB
     public static Categoria fromEspanol(String text) {
         for (Categoria categoria : Categoria.values()) {
             if (categoria.categoriaEspanol.equalsIgnoreCase(text)) {
