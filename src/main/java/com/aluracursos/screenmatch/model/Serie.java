@@ -1,5 +1,6 @@
 package com.aluracursos.screenmatch.model;
 
+import com.aluracursos.screenmatch.service.ConsultaChatGPT;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class Serie {
         //Utilizar el metodo generico para seleccionar el primer dato de genero mediante el ENUM Categoria
         this.genero = Categoria.fromString(datosSerie.genero().split(",")[0].trim());
         this.actores = datosSerie.actores();
-        this.sinopsis = datosSerie.sinopsis();
+        this.sinopsis = ConsultaChatGPT.obtenerTraduccion(datosSerie.sinopsis());
     }
 
     public Long getId() {
